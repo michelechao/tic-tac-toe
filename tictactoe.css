@@ -1,0 +1,37 @@
+* {
+  text-align: center;
+  background-color: rgb(235, 231, 227);
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+table, th, td {
+    border: 2px solid black;
+    margin: 0 auto;
+    background-color: rgb(213, 235, 255);
+  }
+
+table {
+    width: 400px;
+    height: 400px;
+}
+
+h1 {
+  text-align: center;
+  letter-spacing: 4px;
+  font-size: 50px;
+}
+
+#message {
+  font-size: 25px;
+}
+
+#winner {
+  font-size: 50px;
+}
+
+button {
+  background-color: rgb(213, 235, 255);
+  border: 5px double black;
+  padding: 10px 20px;
+  font-size: 25px;
+}

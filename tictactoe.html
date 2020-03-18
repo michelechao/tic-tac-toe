@@ -1,0 +1,111 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Simple Tic-Tac-Toe Game</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <link rel="stylesheet" type="text/css" href="tictactoe.css">
+
+</head>
+
+<body>
+  <script src="js/scripts.js"></script>
+
+  <h1>Tic Tac Toe</h1>
+
+  <table>
+    <tr>
+        <th id="1" onclick="play(this.id)" class = "square">?</th>
+        <th id="2" onclick="play(this.id)" class = "square">?</th>
+        <th id="3" onclick="play(this.id)" class = "square">?</th>
+    </tr>
+    <tr>
+        <th id="4" onclick="play(this.id)" class = "square">?</th>
+        <th id="5" onclick="play(this.id)" class = "square">?</th>
+        <th id="6" onclick="play(this.id)" class = "square">?</th>
+    </tr>
+    <tr>
+        <th id="7" onclick="play(this.id)" class = "square" >?</th>
+        <th id="8" onclick="play(this.id)" class = "square">?</th>
+        <th id="9" onclick="play(this.id)" class = "square">?</th>
+    </tr>
+  </table>
+
+<p id="winner">Play to win!</p>
+<p id="message">Player O starts</p>
+
+<button type="button" onclick="location.reload()">Replay</button>
+  
+
+    <script>
+          var clicks = 1;
+          var win = false;
+
+          //determines a winning match
+          function detectWin(player) {
+            var first = document.getElementById("1").innerHTML;
+            var second = document.getElementById("2").innerHTML;
+            var third = document.getElementById("3").innerHTML;
+            var fourth = document.getElementById("4").innerHTML;
+            var fifth = document.getElementById("5").innerHTML;
+            var sixth = document.getElementById("6").innerHTML;
+            var seventh = document.getElementById("7").innerHTML;
+            var eighth = document.getElementById("8").innerHTML;
+            var ninth = document.getElementById("9").innerHTML;
+            console.log(clicks);
+
+            if (((first + second + third) == "OOO") || ((first + second + third) == "XXX") ||
+                ((first + fourth + seventh) == "OOO") || ((first + fourth + seventh) == "XXX") ||
+                ((fourth + fifth + sixth) == "OOO") || ((fourth + fifth + sixth) == "XXX") ||
+                ((seventh + eighth + ninth) == "OOO") || ((seventh + eighth + ninth) == "XXX") ||
+                ((second + fifth + eighth) == "OOO") || ((second + fifth + eighth) == "XXX") ||
+                ((third + sixth + ninth) == "OOO") || ((third + sixth + ninth) == "XXX") ||
+                ((first + fifth + ninth) == "OOO") || ((first + fifth + ninth) == "XXX") ||
+                ((third + fifth + seventh) == "OOO") || ((third + fifth + seventh) == "XXX")){
+                  win = true;
+                  document.getElementById("winner").innerHTML = "Player O won!";
+                } else {
+                  win = false;
+                    } if (win) {
+                        if (player == "X") {
+                          document.getElementById("winner").innerHTML = "Player X wins!";
+                          document.getElementById("message").innerHTML = "";
+                          document.getElementsByClassName("square").removeAttribute("onclick");
+                        } else if (player == "O") {
+                          document.getElementById("winner").innerHTML = "Player O wins!";
+                          document.getElementById("message").innerHTML = "";
+                          document.getElementsByClassName("square").removeAttribute("onclick");
+                        }
+                    } else if (!win) {
+                      if (clicks == 10) {
+                    document.getElementById("message").innerHTML = "Tie - game over";
+                  }
+                      else if (player == "X") {
+                        document.getElementById("message").innerHTML = "Player O's Turn";
+                      } else if (player == "O"){
+                        document.getElementById("message").innerHTML = "Player X's Turn";
+                    }
+                  }
+            }
+            
+            function play(clickedID){
+            clicks += 1;
+            if (document.getElementById(clickedID).innerHTML == "?") {
+                if (clicks%2 == 1) {
+                  document.getElementById(clickedID).innerHTML = "X";
+                  detectWin("X");
+                }
+                else {
+                  document.getElementById(clickedID).innerHTML =  "O";
+                  detectWin("O");
+                } 
+              }
+            }
+        
+    </script>
+
+</body>
+</html>
